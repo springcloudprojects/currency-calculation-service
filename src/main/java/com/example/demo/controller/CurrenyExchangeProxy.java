@@ -6,10 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 //@FeignClient(name = "currency-exchange-service", url = "http://localhost:8000/")
-@FeignClient(name = "currency-exchange-service")
+//@FeignClient(name = "currency-exchange-service")
+@FeignClient(name = "Netflix-Zuul-Proxy")
 @RibbonClient(name = "currency-exchange-service")
 public interface CurrenyExchangeProxy{
 
-	@GetMapping("/curreny-exchange/from/{from}/to/{to}")
+	@GetMapping("/currency-exchange-service/curreny-exchange/from/{from}/to/{to}")
 	public CurrenyBean getExchangeValue(@PathVariable String from, @PathVariable String to);
 }
