@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
+import brave.sampler.Sampler;
+
 @SpringBootApplication
 @EnableFeignClients("com.example.demo")
 @EnableEurekaClient
@@ -14,4 +16,7 @@ public class CurrencyCalculationServiceApplication {
 		SpringApplication.run(CurrencyCalculationServiceApplication.class, args);
 	}
 
+	public Sampler defaultSampler() {
+		return Sampler.ALWAYS_SAMPLE;
+	}
 }
